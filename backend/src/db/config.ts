@@ -13,12 +13,11 @@ const connection = new Sequelize({
 
 const connection = new Sequelize({
   dialect: 'mysql',
-  host: process.env.NODE_ENV !== 'test' ? 'db' : 'localhost',
-  port: process.env.NODE_ENV !== 'test' ? 3306 : 3321,
+  host: 'localhost',
+  port: 3321,
   username: 'root',
   password: '123456',
-  database:
-    process.env.NODE_ENV !== 'test' ? 'lojavirtual' : 'lojavirtual_test',
+  database: 'lojavirtual_test',
   logging: false,
 });
 

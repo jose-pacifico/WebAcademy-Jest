@@ -52,10 +52,30 @@ describe('Produto Service', () => {
    * 
    * cadastrar manualmente um produto no banco de dados via interface MySQL
    * ou via API, mas lembrar de alterar o banco de dados para apontar para bd de teste
-  it('should get specific product', async () => {
-   
-  });
   */
+  it('should get specific product', async () => {
+    const res = await request(server.server).get('/v1/produto/1c6f2480-30af-11ee-8fea-fdc5f6006105');
+    expect(res.statusCode).toEqual(200);
+
+  });
+
+  it('should get NAME of a specific product by id', async () => {
+    const res = await request(server.server).get('/v1/produto/1c6f2480-30af-11ee-8fea-fdc5f6006105');
+    expect(res.body.nome).toEqual("mint green");
+
+  });
+
+  it('should get PRICE of a specific product by id', async () => {
+    const res = await request(server.server).get('/v1/produto/1c6f2480-30af-11ee-8fea-fdc5f6006105');
+    expect(res.body.preco).toEqual(291);
+
+  });
+
+  it('should get STOCK of a specific product by id', async () => {
+    const res = await request(server.server).get('/v1/produto/1c6f2480-30af-11ee-8fea-fdc5f6006105');
+    expect(res.body.estoque).toEqual(9);
+
+  });
 
   afterAll(async () => {
     await connection.close();
