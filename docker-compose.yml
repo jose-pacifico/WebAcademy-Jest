@@ -1,33 +1,33 @@
 version: "3.8"
 services:
-  backend:
-    container_name: loja_backend
-    depends_on:
-      db:
-        condition: service_started
-      db_test:
-        condition: service_started
-    restart: on-failure  
-    build:
-      context: ./backend
-    ports:
-      - ${PORT_BACK}:${PORT_BACK}
-    volumes:
-      - ./backend:/usr/src/app
-    env_file: ./backend/.env
-  frontend:
-    container_name: loja_frontend
-    depends_on:
-      backend:
-        condition: service_started
-    restart: on-failure
-    build:
-      context: ./frontend
-    ports:
-      - ${PORT_FRONT}:${PORT_FRONT}
-    volumes:
-      - ./frontend:/usr/src/app
-    env_file: ./frontend/.env
+  # backend:
+  #   container_name: loja_backend
+  #   depends_on:
+  #     db:
+  #       condition: service_started
+  #     db_test:
+  #       condition: service_started
+  #   restart: on-failure  
+  #   build:
+  #     context: ./backend
+  #   ports:
+  #     - ${PORT_BACK}:${PORT_BACK}
+  #   volumes:
+  #     - ./backend:/usr/src/app
+  #   env_file: ./backend/.env
+  # frontend:
+  #   container_name: loja_frontend
+  #   depends_on:
+  #     backend:
+  #       condition: service_started
+  #   restart: on-failure
+  #   build:
+  #     context: ./frontend
+  #   ports:
+  #     - ${PORT_FRONT}:${PORT_FRONT}
+  #   volumes:
+  #     - ./frontend:/usr/src/app
+  #   env_file: ./frontend/.env
 
   db_test:
     image: mysql:8.0
